@@ -1,18 +1,11 @@
 #include "Timer.h"
 
-Timer::Timer()
+Timer::Timer() : PrintStuff("font//Paper.otf", 25)
 {
-	this->font.loadFromFile("font//Paper.otf");
-
+	this->timeStop = 0;
 	this->frameTime = 0;
-	this->text = sf::Text("0", font, 23);
-	this->text.setFillColor(sf::Color::Black);
-	text.setPosition(900 - text.getCharacterSize() * text.getString().getSize(), 10);
-}
 
-sf::Text Timer::getText()
-{
-	return this->text;
+	text.setFillColor(sf::Color::Black);
 }
 
 void Timer::setTime(float frametime)

@@ -31,6 +31,9 @@
     <Filter Include="Исходные файлы\timer">
       <UniqueIdentifier>{3af81aa6-b744-4679-8f2b-b554fbb833ab}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Исходные файлы\printStuff">
+      <UniqueIdentifier>{3acf3a70-6b61-4d9c-8075-49d299835371}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Background.cpp">
@@ -51,6 +54,9 @@
     <ClCompile Include="Timer.cpp">
       <Filter>Исходные файлы\timer</Filter>
     </ClCompile>
+    <ClCompile Include="PrintStuff.cpp">
+      <Filter>Исходные файлы\printStuff</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Background.h">
@@ -67,6 +73,9 @@
     </ClInclude>
     <ClInclude Include="Timer.h">
       <Filter>Исходные файлы\timer</Filter>
+    </ClInclude>
+    <ClInclude Include="PrintStuff.h">
+      <Filter>Исходные файлы\printStuff</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

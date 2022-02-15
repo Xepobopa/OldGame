@@ -16,6 +16,7 @@ int main()
 	win.setVerticalSyncEnabled(true);
 
 
+#pragma region Create  background, Characters, Timer and global time
 	// create background
 	Background bg;
 
@@ -32,6 +33,8 @@ int main()
 	Clock clock;
 	Time time;
 	float globaTime = 0;
+#pragma endregion
+
 
 	// TODO: delay after striking Space(2 sec.)
 	// TODO: Maybe animation
@@ -73,12 +76,14 @@ int main()
 		if (ch2->getCharacter().getGlobalBounds().intersects(ch1->getCharacter().getGlobalBounds()) && Keyboard::isKeyPressed(Keyboard::Space)) { win.close(); }
 
 
+#pragma region Draw
 		// draw Characters
 		win.draw(ch1->getCharacter());
 		win.draw(ch2->getCharacter());
 
 		// draw time
 		win.draw(timer.getText());
+#pragma endregion
 
 		
 		win.display();

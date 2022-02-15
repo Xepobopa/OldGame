@@ -1,18 +1,15 @@
 #pragma once
 #include<cmath>
-#include<iostream>
+#include "PrintStuff.h"
 #include<SFML/Graphics.hpp>
-class Timer
+class Timer : public PrintStuff
 {
 private:
-	sf::Font font;
-	sf::Text text;
 	int timeStop;
 	int frameTime;
 public:
 	Timer();
 
-	sf::Text getText();
 	void setTime(float frametime);
 	void setTimeStop(int timeStop);
 	bool checkTimeStop();
