@@ -1,15 +1,20 @@
 #pragma once
+#include<cmath>
+#include<iostream>
 #include<SFML/Graphics.hpp>
 class Timer
 {
 private:
-	sf::Clock clock;
-	sf::Time time;
-	sf::Texture texture;
-	sf::Sprite sprite;
-	float frametime = 0;
+	sf::Font font;
+	sf::Text text;
+	int timeStop;
+	int frameTime;
 public:
 	Timer();
-	float getTime();
+
+	sf::Text getText();
+	void setTime(float frametime);
+	void setTimeStop(int timeStop);
+	bool checkTimeStop();
 };
 
