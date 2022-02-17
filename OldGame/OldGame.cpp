@@ -1,5 +1,6 @@
 #include<iostream>
 #include "Timer.h"
+#include "SpaceDelay.h"
 #include "Background.h"
 #include "CharacterWASD.h"
 #include "CharacterArrows.h"
@@ -25,18 +26,24 @@ int main()
 	// character 2
 	Character* ch2 = new CharacterArrows(Vector2f(900 - 200, 900 - 300));
 
+	// create hand(Space delay)
+	// needed to print hand.png and inform player about Space delay
+	SpaceDelay* sd = new SpaceDelay();
+	sd->setCurrentTime(0);
+
 	// timer
 	Timer timer;
 	timer.setTimeStop(15);
 
-	// gloabal time
+	// global time
 	Clock clock;
 	Time time;
 	float globaTime = 0;
+	float frameTime = 0;
 #pragma endregion
 
 
-	// TODO: delay after striking Space(2 sec.)
+	// TODO delete hand delay and create the class hand delay
 	// TODO: Maybe animation
 	while (win.isOpen())
 	{
@@ -66,14 +73,22 @@ int main()
 #pragma region Set time / check time end 
 		if (timer.checkTimeStop()) { win.close(); }
 
-		globaTime += clock.getElapsedTime().asSeconds();
+		frameTime = clock.getElapsedTime().asSeconds();
+		globaTime += frameTime;
 		timer.setTime(globaTime);
 
 		clock.restart();
 #pragma endregion
 
 		// touch
-		if (ch2->getCharacter().getGlobalBounds().intersects(ch1->getCharacter().getGlobalBounds()) && Keyboard::isKeyPressed(Keyboard::Space)) { win.close(); }
+		if (sd->checkTimeTrue(globaTime)) {
+			if (Keyboard::isKeyPressed(Keyboard::Space)) { 
+				sd->setCurrentTime(globaTime);
+				if (ch2->getCharacter().getGlobalBounds().intersects(ch1->getCharacter().getGlobalBounds())) { win.close(); }		
+				sd->halfTransparent();
+			}
+		}
+	
 
 
 #pragma region Draw
@@ -83,6 +98,10 @@ int main()
 
 		// draw time
 		win.draw(timer.getText());
+
+		// draw Space delay
+		win.draw(sd->getCharacter());
+		win.draw(sd->getText());
 #pragma endregion
 
 		
