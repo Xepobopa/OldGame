@@ -9,10 +9,14 @@ Character::Character(sf::Vector2f pos, std::string path)
 
 	this->sprite = new sf::Sprite(*texture);
 	this->sprite->setPosition(pos);
+
+	this->speed = 5;
 }
 
 Character::Character(std::string path)
 {
+	this->speed = 5;
+
 	this->texture = new sf::Texture;
 	this->texture->loadFromFile(path);
 
@@ -22,12 +26,6 @@ Character::Character(std::string path)
 sf::Sprite Character::getCharacter()
 {
 	return *this->sprite;
-}
-
-void Character::moveRight()
-{
-	if (pos.x <= 900 - 37) { this->pos = sf::Vector2f(pos.x + 5, pos.y); }
-	this->sprite->setPosition(pos);
 }
 
 void Character::setPosition(sf::Vector2f pos)
@@ -40,9 +38,19 @@ sf::Vector2f Character::getSize()
 	return this->sprite->getScale();
 }
 
+void Character::setSpeed(int speed)
+{
+	this->speed = speed;
+}
+
 void Character::NotTransparent()
 {
 	this->sprite->setColor(sf::Color(255, 255, 255, 255));
+}
+
+void Character::transparent()
+{
+	this->sprite->setColor(sf::Color(255, 255, 255, 0));
 }
 
 void Character::halfTransparent()
@@ -55,21 +63,27 @@ sf::Vector2f Character::getPosition()
 	return this->pos;
 }
 
+void Character::moveRight()
+{
+	if (pos.x <= 900 - 37) { this->pos = sf::Vector2f(pos.x + speed, pos.y); }
+	this->sprite->setPosition(pos);
+}
+
 void Character::moveLeft()
 {
-	if (pos.x >= 0) { this->pos = sf::Vector2f(pos.x - 5, pos.y); }
+	if (pos.x >= 0) { this->pos = sf::Vector2f(pos.x - speed, pos.y); }
 	this->sprite->setPosition(pos);
 }
 
 void Character::moveTop()
 {
-	if (pos.y >= 0) { this->pos = sf::Vector2f(pos.x, pos.y - 5); }
+	if (pos.y >= 0) { this->pos = sf::Vector2f(pos.x, pos.y - speed); }
 	this->sprite->setPosition(pos);
 }
 
 void Character::moveBottom()
 {
-	if (pos.y <= 900 - 50) { this->pos = sf::Vector2f(pos.x, pos.y + 5); }
+	if (pos.y <= 900 - 50) { this->pos = sf::Vector2f(pos.x, pos.y + speed); }
 	this->sprite->setPosition(pos);
 }
 

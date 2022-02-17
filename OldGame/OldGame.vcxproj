@@ -157,6 +157,7 @@
     <ClCompile Include="CharacterArrows.cpp" />
     <ClCompile Include="OldGame.cpp" />
     <ClCompile Include="PrintStuff.cpp" />
+    <ClCompile Include="SlowDown.cpp" />
     <ClCompile Include="SpaceDelay.cpp" />
     <ClCompile Include="Timer.cpp" />
   </ItemGroup>
@@ -166,6 +167,7 @@
     <ClInclude Include="CharacterWASD.h" />
     <ClInclude Include="CharacterArrows.h" />
     <ClInclude Include="PrintStuff.h" />
+    <ClInclude Include="SlowDown.h" />
     <ClInclude Include="SpaceDelay.h" />
     <ClInclude Include="Timer.h" />
   </ItemGroup>

@@ -16,7 +16,7 @@ void SpaceDelay::setCurrentTime(float time)
 
 bool SpaceDelay::checkTimeTrue(float globalTime)
 {
-	this->setContent( std::to_string((int)floor(globalTime - current_time)) + " / 2");
+	this->setContent( std::to_string((int)floor(globalTime - current_time)) + " / 2" );
 	if (globalTime - this->current_time >= 2) {
 		this->setContent("");
 		this->NotTransparent();
@@ -24,7 +24,3 @@ bool SpaceDelay::checkTimeTrue(float globalTime)
 	}
 	else { return false; }
 }
-
-
-
-
